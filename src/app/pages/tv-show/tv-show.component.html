@@ -1,0 +1,35 @@
+<app-nav-bar></app-nav-bar>
+<app-menu></app-menu>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <div class="show-top-grids">
+    <div class="col-sm-8 single-left">
+      <div class="song">
+        <div class="song-info">
+          <h3>{{tvShow.title}}</h3>	
+      </div>
+        <div class="video-grid">
+          <iframe src="https://www.youtube.com/embed/hMANIarjT50" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+      <div class="published">
+          <div class="load_more">	
+            <ul id="myList">
+              <li style="display: list-item;">
+                <h4>Published on  {{tvShow.releaseDate | dateFormat}}</h4>
+                <h4>Genre:  {{tvShow.genre.name}}</h4>
+                <h4>Created by:  {{tvShow.producer.name}}</h4>
+                <h4>Content rating:  {{tvShow.contentRating.name}}</h4>
+                <h4>User rating:  {{tvShow.userRating}}<fa name="star"></fa></h4>
+                <p>{{tvShow.description}}</p>
+              </li>
+            </ul>
+          </div>
+      </div>
+      <app-comment-section></app-comment-section>
+    </div>
+    <app-episode-list [tvShow]="tvShow"></app-episode-list>
+    <div class="clearfix"> </div>
+  </div>
+</div>
+<div class="clearfix"> </div>

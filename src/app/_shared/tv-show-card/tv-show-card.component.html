@@ -1,0 +1,16 @@
+<div class="col-md-2 resent-grid recommended-grid show-video-grid">
+    <div class="resent-grid-img recommended-grid-img">
+      <a routerLink="/tv-show/{{this.tvShow.id}}"><img src="{{tvShow.poster}}" alt="" /></a>
+      <div class="time small-time show-time">
+        <p>7:34</p>
+      </div>
+      <div class="clck show-clock">
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="resent-grid-info recommended-grid-info">
+      <h5><a routerLink="/tv-show/{{this.tvShow.id}}" class="title">{{tvShow.title}}</a></h5>
+      <p class="author"><a href="#" class="author">{{tvShow.producer.name}}</a></p>
+      <p class="views">{{tvShow.userRating}} user rating</p>
+    </div>
+  </div>
