@@ -17,8 +17,8 @@ export class MovieCardComponent implements OnInit {
   }
 
   public get getTimeString():string{
-    var hour=Math.floor(this.movie.videoDuration/60);
-    var min=this.movie.videoDuration%60;
+    var hour=Math.floor(this.movie.runtime/60);
+    var min=this.movie.runtime%60;
     return `${hour}:${min}`;
   }
 }

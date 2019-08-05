@@ -13,9 +13,9 @@ export class Movie {
     userRating: number;
     distribution: Array<Actor>;
     poster: string;
-    videoDuration: number;
+    runtime: number;
 
-	constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $genre: Genre, $contentRating: ContentRating, $userRating: number, $distribution: Array<Actor>, $poster: string, $videoDuration: number) {
+	constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $genre: Genre, $contentRating: ContentRating, $userRating: number, $distribution: Array<Actor>, $poster: string, $runtime: number) {
 		this.id = $id;
 		this.title = $title;
 		this.producer = $producer;
@@ -26,7 +26,7 @@ export class Movie {
 		this.userRating = $userRating;
 		this.distribution = $distribution;
 		this.poster = $poster;
-		this.videoDuration = $videoDuration;
+		this.runtime = $runtime;
 	}
 
 }

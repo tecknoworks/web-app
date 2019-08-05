@@ -33,6 +33,7 @@ import { DateFormatPipe } from './_helpers/date-format-pipe';
 import { CommentSectionComponent } from './_shared/comment-section/comment-section.component';
 import { EpisodeListComponent } from './_shared/episode-list/episode-list.component';
 import { EpisodeComponent } from './pages/episode/episode.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { EpisodeComponent } from './pages/episode/episode.component';
       MatNativeDateModule,
       MatRadioModule,
       AngularFontAwesomeModule,
-      MatExpansionModule
+      MatExpansionModule,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [

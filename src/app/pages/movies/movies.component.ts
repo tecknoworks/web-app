@@ -17,7 +17,6 @@ export class MoviesComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.movieService.initMoviesByGenre()
   }
 
   getMoviesForGenre(genre:Genre):Array<Movie>{

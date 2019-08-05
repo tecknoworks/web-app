@@ -30,7 +30,7 @@ export class EpisodeComponent implements OnInit {
     this._tvShowService.tvShows.forEach((show)=>{
       if(show.id==tvShowId){
         this.tvShow=show
-        this.tvShow.episodes.forEach((ep)=>{
+        this.tvShow.episodeList.forEach((ep)=>{
           if(ep.id==episodeId){
             this.episode=ep
           }

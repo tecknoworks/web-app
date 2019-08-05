@@ -15,7 +15,7 @@ export class EpisodeListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.tvShow.episodes.forEach((value)=>{
+    this.tvShow.episodeList.forEach((value)=>{
       if(Array.from(this.episodeMap.keys()).includes(value.seasonNo)){
         this.episodeMap.get(value.seasonNo).push(value)
       }else{

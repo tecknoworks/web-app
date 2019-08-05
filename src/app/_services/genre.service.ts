@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Genre } from '../_models/genre';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GenreService {
 
-  public genres: Array<Genre>;
+  private _genres: Genre[];
 
-  constructor() { 
-    this.genres=[
-      new Genre('1', "Action"),
-      new Genre('2', "Drama"),
-      new Genre('3', "Thriller"),
-      new Genre('4', "Comedy")
-    ]
+  constructor(private _http: HttpClient) { 
+    this.initGenres();
   }
 
+  public async initGenres(){
+    // debugger;
+    this._genres= await this._http.get<Genre[]>("http://localhost:8080/details/genre/all").toPromise()
+  }
+
+  public get genres() :Genre[]{
+    return this._genres;
+  }
 }
