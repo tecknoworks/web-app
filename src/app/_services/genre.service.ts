@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Genre } from '../_models/genre';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,7 @@ export class GenreService {
   }
 
   public async initGenres(){
-    // debugger;
-    this._genres= await this._http.get<Genre[]>("http://localhost:8080/details/genre/all").toPromise()
+    this._genres= await this._http.get<Genre[]>(`${environment.gatewayApi}/details/genre/all`).toPromise()
   }
 
   public get genres() :Genre[]{

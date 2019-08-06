@@ -8,27 +8,14 @@
           <h2>{{this.movie.title}}</h2>	
       </div>
         <div class="video-grid">
-          <iframe src="http://afterglowplayer.com/sandbox/v1/afterglow_local_hd.mp4" allowfullscreen></iframe>
+          <video controls>
+              <source src="{{videoUrl}}" allowfullscreen>
+          </video>
+          
         </div>
       </div>
       <div class="clearfix"> </div>
       <div class="published">
-        <script src="jquery.min.js"></script>
-          <script>
-            $(document).ready(function () {
-              size_li = $("#myList li").size();
-              x=1;
-              $('#myList li:lt('+x+')').show();
-              $('#loadMore').click(function () {
-                x= (x+1 <= size_li) ? x+1 : size_li;
-                $('#myList li:lt('+x+')').show();
-              });
-              $('#showLess').click(function () {
-                x=(x-1<0) ? 1 : x-1;
-                $('#myList li').not(':lt('+x+')').hide();
-              });
-            });
-          </script>
           <div class="load_more">	
             <ul id="myList">
               <li style="display: list-item;">

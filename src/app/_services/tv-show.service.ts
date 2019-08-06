@@ -4,6 +4,7 @@ import { Actor } from '../_models/actor';
 import { Genre } from '../_models/genre';
 import { ContentRating } from '../_models/content-rating';
 import { Episode } from '../_models/episode';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

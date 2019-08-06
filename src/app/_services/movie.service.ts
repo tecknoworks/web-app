@@ -4,6 +4,7 @@ import { Actor } from '../_models/actor';
 import { Genre } from '../_models/genre';
 import { ContentRating } from '../_models/content-rating';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class MovieService {
   }
 
   public async initMovies(){
-    this._movies= await this._http.get<Movie[]>("http://localhost:8080/movies/all").toPromise();
+    this._movies= await this._http.get<Movie[]>(`${environment.gatewayApi}/movies/all`).toPromise();
     this.initMoviesByGenre()
     
   }
@@ -46,6 +47,8 @@ export class MovieService {
     var result:Movie
     this._movies.forEach((value)=>{  
       if(value.id==movieId){
+        console.log('Intraa');
+        
         result= value;
       }
     })
