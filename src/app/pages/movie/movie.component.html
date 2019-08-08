@@ -5,7 +5,7 @@
     <div class="movie-display">
       <div class="song">
         <div class="song-info">
-          <h2>{{this.movie.title}}</h2>	
+          <h2>{{movie?.title}}</h2>	
       </div>
         <div class="video-grid">
           <video controls>
@@ -19,12 +19,12 @@
           <div class="load_more">	
             <ul id="myList">
               <li style="display: list-item;">
-                <h4>Published on  {{movie.releaseDate | dateFormat}}</h4>
-                <h4>Genre:  {{movie.genre.name}}</h4>
-                <h4>Created by:  {{movie.producer.name}}</h4>
-                <h4>Content rating:  {{movie.contentRating.rating}}</h4>
-                <h4>User rating:  {{movie.userRating}}<fa name="star"></fa></h4>
-                <p>{{movie.description}}</p>
+                <h4>Published on  {{movie?.releaseDate | dateFormat}}</h4>
+                <h4>Genre:  {{movie?.genre.name}}</h4>
+                <h4>Created by:  {{movie?.producer.name}}</h4>
+                <h4>Content rating:  {{movie?.contentRating.rating}}</h4>
+                <h4>User rating:  {{movie?.userRating}}<fa name="star"></fa></h4>
+                <p>{{movie?.description}}</p>
               </li>
             </ul>
           </div>

@@ -20,7 +20,7 @@ export class TvShowsComponent implements OnInit {
   }
 
   getTvShowsForGenre(genre:Genre):Array<TvShow>{
-    return this.tvShowsService.tvShowsByGenre.get(genre.id);
+    return this.tvShowsService.tvShowsByGenre[genre.id];
   }
 
   public get genres():Array<Genre>{

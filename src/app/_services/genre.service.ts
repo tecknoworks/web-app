@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class GenreService {
 
-  private _genres: Genre[];
+  private _genres=[];
 
   constructor(private _http: HttpClient) { 
     this.initGenres();

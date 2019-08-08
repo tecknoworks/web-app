@@ -43,15 +43,8 @@ export class MovieService {
     })
   }
 
-  public getMovieById(movieId:string):Movie{
-    var result:Movie
-    this._movies.forEach((value)=>{  
-      if(value.id==movieId){
-        console.log('Intraa');
-        
-        result= value;
-      }
-    })
+  public async getMovieById(movieId:string):Promise<Movie>{
+    var result = await this._http.get<Movie>(`${environment.gatewayApi}/movies/${movieId}`).toPromise()
     return result
   }
 

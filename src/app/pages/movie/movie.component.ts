@@ -22,7 +22,13 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     this.movieId = this._activatedRoute.snapshot.params['movie-id'];
-    this.movie=this._movieService.getMovieById(this.movieId)
+    console.log(this.movieId);
+    
+    this._movieService.getMovieById(this.movieId).then((movie)=>{
+      this.movie=movie;
+      console.log(this.movie);
+      
+    });
   }
 
   public get videoUrl():string{

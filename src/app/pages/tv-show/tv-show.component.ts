@@ -13,16 +13,19 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class TvShowComponent implements OnInit {
 
   public tvShowId:string
-  public tvShow:TvShow
+  public trailer: SafeResourceUrl
 
-  constructor(private _tvShowService: TvShowService, private _activatedRoute: ActivatedRoute,private sanitizer: DomSanitizer) { }
+  constructor(private _tvShowService: TvShowService, private _activatedRoute: ActivatedRoute,private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.tvShowId=this._activatedRoute.snapshot.params['tv-show-id']
-    this.tvShow=this._tvShowService.getTvShowById(this.tvShowId)
+    this._tvShowService.initTvShowById(this.tvShowId)
+    this.trailer=this._sanitizer.bypassSecurityTrustResourceUrl(this.tvShow.trailer);
   }
 
-  public get trailer(){
-    return this.sanitizer.bypassSecurityTrustUrl(this.tvShow.trailer)
+
+
+  public get tvShow(): TvShow{
+    return this._tvShowService.tvShow
   }
 }

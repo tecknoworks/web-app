@@ -16,8 +16,7 @@ export class TvShow {
     actorList: Array<Actor>;
     poster: string;
     trailer: string;
-    episodeList: Array<Episode>;
-    constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $seasonsNo: number, $genre: Genre, $contentRating: ContentRating, $userRating: number, $actorList: Array<Actor>, $poster: string, $trailer:string, $episodeList: Array<Episode>) {
+    constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $seasonsNo: number, $genre: Genre, $contentRating: ContentRating, $userRating: number, $actorList: Array<Actor>, $poster: string, $trailer:string) {
 		this.id = $id;
 		this.title = $title;
 		this.producer = $producer;
@@ -29,7 +28,6 @@ export class TvShow {
 		this.userRating = $userRating;
 		this.actorList = $actorList;
         this.poster = $poster;
-        this.episodeList= $episodeList;
     }
 
 }

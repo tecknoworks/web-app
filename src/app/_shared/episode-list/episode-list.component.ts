@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TvShow } from 'src/app/_models/tv-show';
 import { Episode } from 'src/app/_models/episode';
+import { EpisodeService } from 'src/app/_services/episode.service';
 
 @Component({
   selector: 'app-episode-list',
@@ -10,30 +11,23 @@ import { Episode } from 'src/app/_models/episode';
 export class EpisodeListComponent implements OnInit {
 
   @Input() tvShow: TvShow
-  public episodeMap:Map<number, Array<Episode>> =new Map()
 
-  constructor() { }
+  constructor(private _episodeService: EpisodeService) { }
 
   ngOnInit() {
-    this.tvShow.episodeList.forEach((value)=>{
-      if(Array.from(this.episodeMap.keys()).includes(value.seasonNo)){
-        this.episodeMap.get(value.seasonNo).push(value)
-      }else{
-        this.episodeMap.set(value.seasonNo,[value])
-      }
-    })
+    this._episodeService.initSeasonList(this.tvShow.id)
   }
 
-  public get seasonRange():Array<number>{
-    var result:Array<number>=new Array()
+  public get seasonRange():Array<string>{
+    var result:Array<string>=new Array()
     for(var i=1;i<=this.tvShow.seasonsNo;i++){
-      result.push(i)
+      result.push(i.toString())
     }
     return result
   }
 
-  public seasonEpisodes(seasonNo:number):Array<Episode>{
-    return this.episodeMap.get(seasonNo)
+  public seasonEpisodes(seasonNo:string):Array<Episode>{
+    return this._episodeService.seasonList[seasonNo]
   }
 
 }
