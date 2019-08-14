@@ -17,7 +17,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { TvShowsComponent } from './pages/tv-shows/tv-shows.component';
 import { TvShowCardComponent } from './_shared/tv-show-card/tv-show-card.component';
 import { MoviesComponent } from './pages/movies/movies.component';
@@ -33,7 +35,9 @@ import { DateFormatPipe } from './_helpers/date-format-pipe';
 import { CommentSectionComponent } from './_shared/comment-section/comment-section.component';
 import { EpisodeListComponent } from './_shared/episode-list/episode-list.component';
 import { EpisodeComponent } from './pages/episode/episode.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { UserIdInterceptor } from './_helpers/user-id.interception';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -80,9 +84,14 @@ import {HttpClientModule} from '@angular/common/http';
       MatRadioModule,
       AngularFontAwesomeModule,
       MatExpansionModule,
-      HttpClientModule
+      HttpClientModule,
+      MatGridListModule,
+      MatProgressBarModule
    ],
-   providers: [],
+   providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: UserIdInterceptor, multi: true },
+      CookieService
+   ],
    bootstrap: [
       AppComponent
    ]

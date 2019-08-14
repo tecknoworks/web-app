@@ -5,6 +5,7 @@ import { Genre } from '../_models/genre';
 import { ContentRating } from '../_models/content-rating';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MovieService {
   private _movies: Movie[] = new Array();
   private _moviesByGenre: Map<string, Movie[]> = new Map()
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private _authService: AuthService) {
     this.initMovies()
   }
 

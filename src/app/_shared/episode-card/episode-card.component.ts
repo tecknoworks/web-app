@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Episode } from 'src/app/_models/episode';
+import { AssetService } from 'src/app/_services/asset.service';
 
 @Component({
   selector: 'app-episode-card',
@@ -9,9 +10,14 @@ import { Episode } from 'src/app/_models/episode';
 export class EpisodeCardComponent implements OnInit {
 
   @Input() episode:Episode  
-  constructor() { }
+  constructor(private _assetService: AssetService) { }
 
   ngOnInit() {
   }
+
+  public get imageUrl(){
+    return this._assetService.imageUrl(this.episode.id);
+  }
+  
 
 }

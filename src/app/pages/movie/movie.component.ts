@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Movie } from 'src/app/_models/movie';
 import { MovieService } from 'src/app/_services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from 'src/app/_services/video.service';
+import { VideoHistoryService } from 'src/app/_services/video-history.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-movie',
@@ -13,26 +15,41 @@ export class MovieComponent implements OnInit {
 
   movieId: string
   public movie:Movie
+  @ViewChild('videoPlayer', {static:false}) videoPlayer: ElementRef;
 
   constructor(
     private _movieService: MovieService,
     private _activatedRoute: ActivatedRoute,
-    private _videoService: VideoService
+    private _videoService: VideoService,
+    private _videoHistoryService: VideoHistoryService
   ) { }
 
   ngOnInit() {
     this.movieId = this._activatedRoute.snapshot.params['movie-id'];
-    console.log(this.movieId);
-    
     this._movieService.getMovieById(this.movieId).then((movie)=>{
-      this.movie=movie;
-      console.log(this.movie);
-      
+      this.movie= movie;
+      if(this.movie.historyRecord!=null)
+        this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time
     });
   }
 
+  ngOnDestroy(){
+    if(this.movie.historyRecord==null){
+      var time=this.videoPlayer.nativeElement.currentTime
+      var videoDuration=this.videoPlayer.nativeElement.duration
+      var screenplayId=this.movieId
+      var screenplayType="movie"
+      var userId=localStorage.getItem('userId')
+      this._videoHistoryService.postHistoryRecord(userId, screenplayId, screenplayType, time, videoDuration)
+    }else{
+      var historyRecord=this.movie.historyRecord;
+      historyRecord.time=this.videoPlayer.nativeElement.currentTime;
+      this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
+    }
+  }
+
   public get videoUrl():string{
-    return this._videoService.videoUrl('long');
+    return this._videoService.videoUrl(this.movieId);
   }
 
 }

@@ -11,21 +11,45 @@ import { AssetService } from 'src/app/_services/asset.service';
 export class MovieCardComponent implements OnInit {
 
   @Input() movie: Movie
+  private _timeViewed: number
+  private _imageUrl: string
+  private _timeString: string
 
   constructor(private assetService: AssetService) { }
 
   ngOnInit() {
+    this.initImageUrl()
+    this.initTimeString()
+    this.initTimeViewed()
   }
 
-  public get getTimeString():string{
+  public get timeViewed(): number{
+    return this._timeViewed
+  }
+
+  public get timeString():string{
+    return this._timeString
+  }
+
+  public get imageUrl():string{
+    return this._imageUrl
+  }
+
+  public initTimeString():void{
     var hours   = Math.floor(this.movie.runtime / 3600);
     var minutes = Math.floor((this.movie.runtime - (hours * 3600)) / 60);
     var seconds = this.movie.runtime - (hours * 3600) - (minutes * 60);
 
-    return `${hours}:${minutes}:${seconds}`;
+    this._timeString=`${hours}:${minutes}:${seconds}`;
   }
 
-  public get imageUrl():string{
-    return this.assetService.imageUrl(this.movie.poster);
+  public initImageUrl():void{
+    this._imageUrl = this.assetService.imageUrl(this.movie.id);
+  }
+
+  public initTimeViewed():void{
+    if(this.movie.historyRecord!=null){
+      this._timeViewed =  (this.movie.historyRecord.time/this.movie.historyRecord.videoDuration)*100    
+    }
   }
 }

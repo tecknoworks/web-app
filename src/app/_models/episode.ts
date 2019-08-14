@@ -1,3 +1,5 @@
+import { HistoryRecord } from './history-record';
+
 export class Episode {
     id: string;
     title: string;
@@ -8,7 +10,8 @@ export class Episode {
     releaseDate: Date;
     poster: string;
     video: string;
-
+    historyRecord: HistoryRecord; 
+    
     constructor($id: string, $title: string, $description: string, $releaseDate: Date, $season: number, $episode: number, $tvShowId:string, $poster: string, $video: string) {
         this.id = $id;
         this.title = $title;

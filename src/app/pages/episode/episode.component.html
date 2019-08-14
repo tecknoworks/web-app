@@ -8,7 +8,9 @@
           <h3><a routerLink="/tv-show/{{this.tvShow?.id}}">{{this.tvShow?.title}}</a> - Season {{this.episode?.seasonNo}},Episode {{this.episode?.episodeNo}}: {{this.episode?.title}}</h3>	
       </div>
         <div class="video-grid">
-          <iframe src="https://www.youtube.com/embed/hMANIarjT50" allowfullscreen></iframe>
+            <video controls>
+                <source [src]="videoUrl" allowfullscreen>
+            </video>
         </div>
       </div>
       <div class="clearfix"> </div>

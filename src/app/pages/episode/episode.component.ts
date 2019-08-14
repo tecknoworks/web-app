@@ -4,6 +4,7 @@ import { Episode } from 'src/app/_models/episode';
 import { TvShow } from 'src/app/_models/tv-show';
 import { ActivatedRoute } from '@angular/router';
 import { EpisodeService } from 'src/app/_services/episode.service';
+import { VideoService } from 'src/app/_services/video.service';
 
 @Component({
   selector: 'app-episode',
@@ -12,7 +13,7 @@ import { EpisodeService } from 'src/app/_services/episode.service';
 })
 export class EpisodeComponent implements OnInit {
 
-  constructor(private _episodeService: EpisodeService, private _tvShowService: TvShowService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _episodeService: EpisodeService, private _tvShowService: TvShowService,private _videoService: VideoService, private _activatedRoute: ActivatedRoute) {
     _activatedRoute.params.subscribe(val => {
       this.fetchData()
     });
@@ -35,6 +36,10 @@ export class EpisodeComponent implements OnInit {
 
   public get tvShow():TvShow{
     return this._tvShowService.tvShow
+  }
+
+  public get videoUrl():string{
+    return this._videoService.videoUrl(this.episode.id);
   }
 
 }

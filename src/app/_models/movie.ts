@@ -1,6 +1,7 @@
 import { Actor } from './actor';
 import { Genre } from './genre';
 import { ContentRating } from './content-rating';
+import { HistoryRecord } from './history-record';
 
 export class Movie {
     id:string;
@@ -14,7 +15,8 @@ export class Movie {
     distribution: Array<Actor>;
     poster: string;
     runtime: number;
-
+	historyRecord: HistoryRecord;
+	
 	constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $genre: Genre, $contentRating: ContentRating, $userRating: number, $distribution: Array<Actor>, $poster: string, $runtime: number) {
 		this.id = $id;
 		this.title = $title;

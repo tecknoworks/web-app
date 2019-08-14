@@ -1,12 +1,18 @@
 <div class="col-md-3 resent-grid recommended-grid movie-video-grid">
   <div class="resent-grid-img recommended-grid-img">
-    <a routerLink="/movie/{{movie.id}}"><img src="{{imageUrl}}" alt="" /></a>
+    <a routerLink="/movie/{{movie.id}}"><img class="movie_poster" src="{{imageUrl}}" alt="" /></a>
     <div class="time small-time show-time movie-time">
-      <p>{{getTimeString}}</p>
+      <p>{{timeString}}</p>
     </div>
     <div class="clck movie-clock">
       <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
     </div>
+    <mat-progress-bar 
+          *ngIf="movie.historyRecord!=null"
+          [color]="orange"
+          [mode]="determinate"
+          [value]="timeViewed">
+      </mat-progress-bar>
   </div>
   <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
     <h5><a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a></h5>
