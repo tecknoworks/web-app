@@ -38,6 +38,9 @@ import { EpisodeComponent } from './pages/episode/episode.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { UserIdInterceptor } from './_helpers/user-id.interception';
 import { CookieService } from 'ngx-cookie-service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
+import { FrameDetailsComponent } from './_shared/frame-details/frame-details.component';
 
 
 @NgModule({
@@ -61,13 +64,15 @@ import { CookieService } from 'ngx-cookie-service';
       DateFormatPipe,
       CommentSectionComponent,
       EpisodeListComponent,
-      EpisodeComponent
+      EpisodeComponent,
+      FrameDetailsComponent
    ],
    entryComponents: [
       SignInComponent,
       SignUpComponent,
       NavBarComponent,
-      MenuComponent
+      MenuComponent,
+      FrameDetailsComponent
    ],
    imports: [
       BrowserModule,
@@ -86,7 +91,9 @@ import { CookieService } from 'ngx-cookie-service';
       MatExpansionModule,
       HttpClientModule,
       MatGridListModule,
-      MatProgressBarModule
+      MatProgressBarModule,
+      MatProgressSpinnerModule,
+      MatButtonModule
    ],
    providers: [
       { provide: HTTP_INTERCEPTORS, useClass: UserIdInterceptor, multi: true },

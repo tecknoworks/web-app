@@ -4,14 +4,14 @@
   <div class="show-top-grids">
     <div class="movie-display">
       <div class="song">
-        <div class="song-info">
-          <h2>{{movie?.title}}</h2>	
-      </div>
         <div class="video-grid">
           <video #videoPlayer controls>
               <source src="{{videoUrl}}" allowfullscreen>
           </video>
-          
+        </div>
+        <div class="song-info">
+          <h2>{{movie?.title}}</h2>	
+          <button mat-raised-button (click)="searchVideoFrame()">Find information about this frame</button>
         </div>
       </div>
       <div class="clearfix"> </div>

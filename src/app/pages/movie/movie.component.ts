@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { VideoService } from 'src/app/_services/video.service';
 import { VideoHistoryService } from 'src/app/_services/video-history.service';
 import { Observable, of } from 'rxjs';
+import { RisService } from 'src/app/_services/ris.service';
+import { MatDialog } from '@angular/material';
+import { FrameDetailsComponent } from 'src/app/_shared/frame-details/frame-details.component';
 
 @Component({
   selector: 'app-movie',
@@ -18,10 +21,12 @@ export class MovieComponent implements OnInit {
   @ViewChild('videoPlayer', {static:false}) videoPlayer: ElementRef;
 
   constructor(
+    private _dialog: MatDialog,
     private _movieService: MovieService,
     private _activatedRoute: ActivatedRoute,
     private _videoService: VideoService,
-    private _videoHistoryService: VideoHistoryService
+    private _videoHistoryService: VideoHistoryService,
+    private _risService: RisService
   ) { }
 
   ngOnInit() {
@@ -46,6 +51,11 @@ export class MovieComponent implements OnInit {
       historyRecord.time=this.videoPlayer.nativeElement.currentTime;
       this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
     }
+  }
+
+  async searchVideoFrame(){
+    this._risService.searchByVideoFrame(this.movie.id, this.videoPlayer.nativeElement.currentTime);
+    this._dialog.open(FrameDetailsComponent);
   }
 
   public get videoUrl():string{
