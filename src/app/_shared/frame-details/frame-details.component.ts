@@ -20,4 +20,8 @@ export class FrameDetailsComponent implements OnInit {
   public get risResult(): RisResult{
     return this._risService.risResult
   }
+
+  closeModal():void{
+    this.dialogRef.close();
+  }
 }
