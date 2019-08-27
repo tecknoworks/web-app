@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { SignInComponent } from '../sign-in/sign-in.component';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,10 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public authservice: AuthService
+    ) { }
 
   ngOnInit() {
   }
@@ -18,18 +22,21 @@ export class NavBarComponent implements OnInit {
   openSigninModal() {
     const signinRef = this.dialog.open(SignInComponent);
   }
-
-  // closeSigninModal(){
-  //   this.signinRef.close();
-  // }
-
+  
   openSignupModal() {
     const signupRef = this.dialog.open(SignUpComponent);
   }
 
-  // closeSignupModal(){
-  //   this.signupRef.close();
-  // }
+  get isAuth():boolean{
+    return this.authservice.isAuth
+  }
 
+  get currentUser():string{
+    return this.authservice.currentUser.username
+  }
+
+  logout(){
+    this.authservice.logout()
+  }
 
 }

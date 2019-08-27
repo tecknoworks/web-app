@@ -39,18 +39,21 @@ export class MovieComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    if(this.movie.historyRecord==null){
-      var time=this.videoPlayer.nativeElement.currentTime
-      var videoDuration=this.videoPlayer.nativeElement.duration
-      var screenplayId=this.movieId
-      var screenplayType="movie"
-      var userId=localStorage.getItem('userId')
-      this._videoHistoryService.postHistoryRecord(userId, screenplayId, screenplayType, time, videoDuration)
-    }else{
-      var historyRecord=this.movie.historyRecord;
-      historyRecord.time=this.videoPlayer.nativeElement.currentTime;
-      this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
+    if(localStorage.getItem('user')){
+      if(this.movie.historyRecord==null){
+        var time=this.videoPlayer.nativeElement.currentTime
+        var videoDuration=this.videoPlayer.nativeElement.duration
+        var screenplayId=this.movieId
+        var screenplayType="movie"
+        var userId=JSON.parse(localStorage.getItem('user')).id;
+        this._videoHistoryService.postHistoryRecord(userId, screenplayId, screenplayType, time, videoDuration)
+      }else{
+        var historyRecord=this.movie.historyRecord;
+        historyRecord.time=this.videoPlayer.nativeElement.currentTime;
+        this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
+      }
     }
+  
   }
 
   async searchVideoFrame(){

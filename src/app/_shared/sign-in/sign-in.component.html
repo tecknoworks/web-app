@@ -1,9 +1,14 @@
 <mat-dialog-content>
         <h3>SIGN IN</h3>
-        <div class="signup">
-          <form>
-              <input type="text" class="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email"/>
-              <input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+        <div class="signup" >
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="formGroup">
+                <input type="text" formControlName="username" class="email" placeholder="Username" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid username"/>
+            </div>
+              
+            <div class="formGroup">
+                <input type="password" formControlName="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+            </div>
               
             <input type="submit"  value="LOGIN"/>
           </form>

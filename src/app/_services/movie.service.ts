@@ -27,8 +27,9 @@ export class MovieService {
     return this._moviesByGenre;
   }
 
-  public async initMovies(){
+  public async initMovies(){ 
     this._movies= await this._http.get<Movie[]>(`${environment.gatewayApi}/movies/all`).toPromise();
+    
     this.initMoviesByGenre()
     
   }

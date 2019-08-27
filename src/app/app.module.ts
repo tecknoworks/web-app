@@ -8,18 +8,18 @@ import { NavBarComponent } from './_shared/nav-bar/nav-bar.component';
 import { MenuComponent } from './_shared/menu/menu.component';
 import { SignInComponent } from './_shared/sign-in/sign-in.component';
 import { SignUpComponent } from './_shared/sign-up/sign-up.component';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { MatCardModule, MatIconModule, MatNativeDateModule } from '@angular/material';
-import {MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatRadioModule} from '@angular/material/radio';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatGridListModule} from '@angular/material/grid-list';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { TvShowsComponent } from './pages/tv-shows/tv-shows.component';
 import { TvShowCardComponent } from './_shared/tv-show-card/tv-show-card.component';
 import { MoviesComponent } from './pages/movies/movies.component';
@@ -35,12 +35,15 @@ import { DateFormatPipe } from './_helpers/date-format-pipe';
 import { CommentSectionComponent } from './_shared/comment-section/comment-section.component';
 import { EpisodeListComponent } from './_shared/episode-list/episode-list.component';
 import { EpisodeComponent } from './pages/episode/episode.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { UserIdInterceptor } from './_helpers/user-id.interception';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+
 import { CookieService } from 'ngx-cookie-service';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatButtonModule} from '@angular/material/button';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatButtonModule} from '@angular/material/button';
 import { FrameDetailsComponent } from './_shared/frame-details/frame-details.component';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -93,11 +96,13 @@ import { FrameDetailsComponent } from './_shared/frame-details/frame-details.com
       MatGridListModule,
       MatProgressBarModule,
       MatProgressSpinnerModule,
-      MatButtonModule
+      MatButtonModule,
+      ReactiveFormsModule
    ],
    providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: UserIdInterceptor, multi: true },
-      CookieService
+      DatePipe,
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+      // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
    ],
    bootstrap: [
       AppComponent

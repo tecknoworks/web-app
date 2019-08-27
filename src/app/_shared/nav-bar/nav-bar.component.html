@@ -16,7 +16,7 @@
 					<input type="submit" value=" ">
 				</form>
 			</div>
-			<div class="header-top-right">	
+			<div class="header-top-right" *ngIf="!isAuth">	
 				<div class="signin">
 					<a class="play-icon btn" (click)="openSignupModal()">Register</a>
 				</div>
@@ -25,6 +25,15 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
+			<div class="header-top-right" *ngIf="isAuth">	
+					<div class="signin">
+						<h4 class="play-icon">Welcome, <b>{{currentUser}}</b></h4>
+					</div>
+					<div class="signin">
+						<a class="play-icon btn" (click)="logout()">Log out</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
 		</div>
 		<div class="clearfix"> </div>
 	</div>

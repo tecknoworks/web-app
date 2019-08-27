@@ -6,20 +6,19 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable()
-export class UserIdInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor {
     constructor(){
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        var userId = localStorage.getItem('userId');
-        if (userId) {
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
             request = request.clone({
                 setHeaders: { 
-                    Authorization: `Bearer token`,
-                }
+                    Authorization: `Bearer ${currentUser.token}`
+                },
             });
         }
-
         return next.handle(request);
     }
 }

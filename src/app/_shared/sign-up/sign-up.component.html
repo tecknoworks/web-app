@@ -1,23 +1,42 @@
 <mat-dialog-content>
   <h3>REGISTER</h3>
   <div class="signup">
-    <form>
-      <input type="text" class="email" placeholder="Enter email / mobile" required="required"
-        pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" />
-      <input type="password" placeholder="Password" required="required" pattern=".{6,}"
-        title="Minimum 6 characters required" autocomplete="off" />
-      <input type="password" placeholder="Confirm Password" required="required" pattern=".{6,}"
-        title="Minimum 6 characters required" autocomplete="off" />
-      <input type="text" class="email" placeholder="Enter username" required="required" />
-
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="formGroup">
+        <input type="text" formControlName="username" class="email" placeholder="Enter username" required="required" />
+      </div>
+      <div class="formGroup">
+          <input type="text" formControlName="email" class="email" placeholder="Enter email / mobile"/>
+      </div>
+      
+      <div class="formGroup">
+          <input type="password" formControlName="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+          <mat-error *ngIf="registerForm.hasError('required')">
+              Password is required
+          </mat-error> 
+      </div>
+      
+      <div class="formGroup">
+          <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autocomplete="off" />
+          <mat-error *ngIf="registerForm.hasError('notSame')">
+              Passwords do not match
+          </mat-error> 
+          <mat-error *ngIf="registerForm.hasError('required')">
+              Confirm password is required
+          </mat-error> 
+      </div>
+      
       <br>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Male</mat-radio-button>
-        <mat-radio-button value="2">Female</mat-radio-button>
-      </mat-radio-group>
+      <div class="formGroup">
+        <mat-radio-group formControlName="gender" aria-label="Select an option">
+          <mat-radio-button type="radio" value="male">Male</mat-radio-button>
+          <mat-radio-button type="radio" value="female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      
       <br>
 
-      <input type="text" class="email" required="required" [matDatepicker]="picker" placeholder="Choose a date">
+      <input type="text" formControlName="birthdate" class="email" required="required" [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker">
         <i class="material-icons" matDatepickerToggleIcon>
           date_range
