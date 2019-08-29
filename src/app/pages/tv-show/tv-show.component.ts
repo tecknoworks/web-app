@@ -19,8 +19,10 @@ export class TvShowComponent implements OnInit {
 
   ngOnInit() {
     this.tvShowId=this._activatedRoute.snapshot.params['tv-show-id']
-    this._tvShowService.initTvShowById(this.tvShowId)
-    this.trailer=this._sanitizer.bypassSecurityTrustResourceUrl(this.tvShow.trailer);
+    this._tvShowService.initTvShowById(this.tvShowId).then(()=>{
+      this.trailer=this._sanitizer.bypassSecurityTrustResourceUrl(this.tvShow.trailer);
+    })
+    
   }
 
 

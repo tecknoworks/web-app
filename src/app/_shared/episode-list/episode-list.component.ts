@@ -15,6 +15,9 @@ export class EpisodeListComponent implements OnInit {
   constructor(private _episodeService: EpisodeService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
     this._episodeService.initSeasonList(this.tvShow.id)
   }
 

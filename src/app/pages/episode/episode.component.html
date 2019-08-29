@@ -7,11 +7,9 @@
         <div class="song-info">
           <h3><a routerLink="/tv-show/{{this.tvShow?.id}}">{{this.tvShow?.title}}</a> - Season {{this.episode?.seasonNo}},Episode {{this.episode?.episodeNo}}: {{this.episode?.title}}</h3>	
       </div>
-        <div class="video-grid">
-            <video controls>
-                <source [src]="videoUrl" allowfullscreen>
-            </video>
-        </div>
+          <video #videoPlayer controls>
+              <source [src]="videoUrl" allowfullscreen>
+          </video>
       </div>
       <div class="clearfix"> </div>
       <div class="published">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TvShowService } from 'src/app/_services/tv-show.service';
 import { Episode } from 'src/app/_models/episode';
 import { TvShow } from 'src/app/_models/tv-show';
@@ -13,9 +13,12 @@ import { VideoService } from 'src/app/_services/video.service';
 })
 export class EpisodeComponent implements OnInit {
 
+  @ViewChild('videoPlayer', {static:false}) videoPlayer: ElementRef;
+  
   constructor(private _episodeService: EpisodeService, private _tvShowService: TvShowService,private _videoService: VideoService, private _activatedRoute: ActivatedRoute) {
     _activatedRoute.params.subscribe(val => {
       this.fetchData()
+      setTimeout(()=>this.videoPlayer.nativeElement.load(), 500); 
     });
    }
 
@@ -23,11 +26,13 @@ export class EpisodeComponent implements OnInit {
     this.fetchData()
   }
 
+
   fetchData(){
     var tvShowId=this._activatedRoute.snapshot.params['tv-show-id']
     var episodeId=this._activatedRoute.snapshot.params['episode-id']
     this._tvShowService.initTvShowById(tvShowId)
     this._episodeService.initEpisodeById(episodeId)
+    
   }
 
   public get episode():Episode{
@@ -39,7 +44,7 @@ export class EpisodeComponent implements OnInit {
   }
 
   public get videoUrl():string{
-    return this._videoService.videoUrl(this.episode.id);
+    return this.episode!=null ? this._videoService.videoUrl(this.episode.id): '';
   }
 
 }
