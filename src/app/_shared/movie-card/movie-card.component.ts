@@ -44,7 +44,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   public initImageUrl():void{
-    this._imageUrl = this.assetService.imageUrl(this.movie.id);
+    this._imageUrl = this.assetService.imageUrl(this.movie.poster);
   }
 
   public initTimeViewed():void{

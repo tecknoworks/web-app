@@ -5,7 +5,7 @@ import { Genre } from '../_models/genre';
 import { ContentRating } from '../_models/content-rating';
 import { Episode } from '../_models/episode';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { stringify } from 'querystring';
 
 
@@ -43,7 +43,9 @@ export class TvShowService {
   }
 
   public async initTvShowById(tvShowId: string) {
-    this._tvShow= await this._httpClient.get<TvShow>(`${environment.gatewayApi}/tv-shows/${tvShowId}`).toPromise()
+    let params = new HttpParams();
+    params = params.append('tvShowId', tvShowId);
+    this._tvShow= await this._httpClient.get<TvShow>(`${environment.gatewayApi}/tv-shows/one`, {params: params}).toPromise()
   }
 
   

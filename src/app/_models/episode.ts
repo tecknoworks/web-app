@@ -10,9 +10,10 @@ export class Episode {
     releaseDate: Date;
     poster: string;
     video: string;
+    runtime: number;
     historyRecord: HistoryRecord; 
     
-    constructor($id: string, $title: string, $description: string, $releaseDate: Date, $season: number, $episode: number, $tvShowId:string, $poster: string, $video: string) {
+    constructor($id: string, $title: string, $description: string, $releaseDate: Date, $season: number, $episode: number, $tvShowId:string, $poster: string, $video: string, $runtime: number) {
         this.id = $id;
         this.title = $title;
         this.description = $description;
@@ -22,6 +23,7 @@ export class Episode {
         this.tvShowId = $tvShowId
         this.poster = $poster
         this.video = $video;
+        this.runtime = $runtime;
     }
 
 }

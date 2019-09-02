@@ -16,7 +16,7 @@ export class EpisodeCardComponent implements OnInit {
   }
 
   public get imageUrl(){
-    return this._assetService.imageUrl(this.episode.id);
+    return this._assetService.imageUrl(this.episode.poster);
   }
   
 

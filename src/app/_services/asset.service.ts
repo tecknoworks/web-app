@@ -10,7 +10,7 @@ export class AssetService {
   constructor(private _httpClient: HttpClient) { }
 
   public imageUrl(id: string):string {
-    return `${environment.gatewayApi}/assets/image/${id}.jpg`
+    return `${environment.gatewayApi}/assets/image/${id}`
   }
 
   public uploadImage() {

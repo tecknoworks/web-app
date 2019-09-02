@@ -16,7 +16,7 @@ export class TvShowCardComponent implements OnInit {
   ngOnInit() {  }
 
   public get imageUrl():string{
-    return this._assetService.imageUrl(this.tvShow.id);
+    return this._assetService.imageUrl(this.tvShow.poster);
   }
 
 }

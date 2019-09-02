@@ -44,7 +44,7 @@ export class EpisodeComponent implements OnInit {
   }
 
   public get videoUrl():string{
-    return this.episode!=null ? this._videoService.videoUrl(this.episode.id): '';
+    return this.episode!=null ? this._videoService.videoUrl(this.episode.video): '';
   }
 
 }

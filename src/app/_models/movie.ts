@@ -13,11 +13,13 @@ export class Movie {
     contentRating: ContentRating;
     userRating: number;
     distribution: Array<Actor>;
-    poster: string;
+	poster: string;
+	video: string;
+	videoPoster: string;
     runtime: number;
 	historyRecord: HistoryRecord;
 	
-	constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $genre: Genre, $contentRating: ContentRating, $userRating: number, $distribution: Array<Actor>, $poster: string, $runtime: number) {
+	constructor($id: string, $title: string, $producer: Actor, $description: string, $releaseDate: Date, $genre: Genre, $contentRating: ContentRating, $userRating: number, $distribution: Array<Actor>, $poster: string, $video: string, $videoPoster:string, $runtime: number) {
 		this.id = $id;
 		this.title = $title;
 		this.producer = $producer;
@@ -28,6 +30,8 @@ export class Movie {
 		this.userRating = $userRating;
 		this.distribution = $distribution;
 		this.poster = $poster;
+		this.video=$video;
+		this.videoPoster=$videoPoster;
 		this.runtime = $runtime;
 	}
 

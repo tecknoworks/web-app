@@ -35,6 +35,7 @@ export class MovieComponent implements OnInit {
       this.movie= movie;
       if(this.movie.historyRecord!=null)
         this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time
+      setTimeout(()=>this.videoPlayer.nativeElement.load(), 100);
     });
   }
 
@@ -57,12 +58,12 @@ export class MovieComponent implements OnInit {
   }
 
   async searchVideoFrame(){
-    this._risService.searchByVideoFrame(this.movie.id, this.videoPlayer.nativeElement.currentTime);
+    this._risService.searchByVideoFrame(this.movie.video, this.videoPlayer.nativeElement.currentTime);
     this._dialog.open(FrameDetailsComponent);
   }
 
-  public get videoUrl():string{
-    return this._videoService.videoUrl(this.movieId);
+  public get videoUrl():string{    
+    return this.movie!=null ? this._videoService.videoUrl(this.movie.video): "";
   }
 
 }
