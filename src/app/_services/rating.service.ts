@@ -23,10 +23,10 @@ export class RatingService {
     return result;
   }
 
-  public async setRating(screenplayId: string): Promise<AverageRating> {
+  public async setRating(screenplayId: string,rating:number): Promise<Rating> {
     let params = new HttpParams();
-    params = params.append("screenplayId",screenplayId);
-    var result = await this._httpClient.get<AverageRating>(`${environment.gatewayApi}/ratings/average`, { params: params }).toPromise()
+    //params = params.append({"screenplayId":screenplayId, "rating": rating});
+    var result = await this._httpClient.get<Rating>(`${environment.gatewayApi}/ratings/`, { params: params }).toPromise()
     return result;
   }
 }
