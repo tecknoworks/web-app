@@ -5,13 +5,17 @@
     <div class="movie-display">
       <div class="song">
         <div class="video-grid">
-          <video #videoPlayer controls style="width: 100%">
+          <video *ngIf="_authService.isAuth && isPlaying" #videoPlayer controls style="width: 100%">
               <source src="{{videoUrl}}" allowfullscreen>
           </video>
+          <div *ngIf="!_authService.isAuth || !isPlaying" (click)="play()" style="position: relative;">
+            <img src="{{videoPosterUrl}}" style="width: 100%;">
+            <img src="assets/images/play.png" class="play_icon">
+          </div>
         </div>
         <div class="song-info">
           <h2>{{movie?.title}}</h2>	
-          <button mat-raised-button (click)="searchVideoFrame()">Find information about this frame</button>
+          <button *ngIf="_authService.isAuth && isPlaying" mat-raised-button (click)="searchVideoFrame()">Find information about this frame</button>
         </div>
       </div>
       <div class="clearfix"> </div>
@@ -29,7 +33,7 @@
             </ul>
           </div>
       </div>
-      <rating [(screenplayId)]="movieId"></rating>
+      <!-- <rating [(screenplayId)]="movieId"></rating> -->
       <app-comment-section></app-comment-section>
     </div>
     <div class="clearfix"> </div>

@@ -8,6 +8,9 @@ import { Observable, of } from 'rxjs';
 import { RisService } from 'src/app/_services/ris.service';
 import { MatDialog } from '@angular/material';
 import { FrameDetailsComponent } from 'src/app/_shared/frame-details/frame-details.component';
+import { AuthService } from 'src/app/_services/auth.service';
+import { AssetService } from 'src/app/_services/asset.service';
+import { SignInComponent } from 'src/app/_shared/sign-in/sign-in.component';
 
 @Component({
   selector: 'app-movie',
@@ -16,7 +19,8 @@ import { FrameDetailsComponent } from 'src/app/_shared/frame-details/frame-detai
 })
 export class MovieComponent implements OnInit {
 
-  movieId: string
+  public movieId: string
+  public isPlaying= false;
   public movie:Movie
   @ViewChild('videoPlayer', {static:false}) videoPlayer: ElementRef;
 
@@ -25,22 +29,21 @@ export class MovieComponent implements OnInit {
     private _movieService: MovieService,
     private _activatedRoute: ActivatedRoute,
     private _videoService: VideoService,
+    private _assetService: AssetService,
     private _videoHistoryService: VideoHistoryService,
-    private _risService: RisService
+    private _risService: RisService,
+    private _authService: AuthService
   ) { }
 
   ngOnInit() {
     this.movieId = this._activatedRoute.snapshot.params['movie-id'];
     this._movieService.getMovieById(this.movieId).then((movie)=>{
       this.movie= movie;
-      if(this.movie.historyRecord!=null)
-        this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time
-      setTimeout(()=>this.videoPlayer.nativeElement.load(), 100);
     });
   }
 
   ngOnDestroy(){
-    if(localStorage.getItem('user')){
+    if(this._authService.isAuth && this.isPlaying){
       if(this.movie.historyRecord==null){
         var time=this.videoPlayer.nativeElement.currentTime
         var videoDuration=this.videoPlayer.nativeElement.duration
@@ -64,6 +67,21 @@ export class MovieComponent implements OnInit {
 
   public get videoUrl():string{    
     return this.movie!=null ? this._videoService.videoUrl(this.movie.video): "";
+  }
+
+  public get videoPosterUrl():string{
+    return this.movie!=null ? this._assetService.imageUrl(this.movie.videoPoster): "";
+  }
+
+  public play(){
+    if(this._authService.isAuth){
+      this.isPlaying = true;
+      if(this.movie.historyRecord!=null)
+        this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time
+      this.videoPlayer.nativeElement.load();
+    }else{
+      this._dialog.open(SignInComponent);
+    }
   }
 
 }

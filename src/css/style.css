@@ -16,6 +16,21 @@ body a {
   -moz-transition: 0.5s all;
   -ms-transition: 0.5s all;
 }
+
+.movie_poster {
+    object-fit: cover;
+    height: 30vw;
+    width: 100%;
+}
+
+.play_icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 15%;
+	transform: translate(-50%, -50%);
+}
+
 a.navbar-brand {
    padding: 0 0 0 1em;
 }
@@ -38,7 +53,7 @@ form.navbar-form.navbar-right {
     margin-right: 1em;
     width: 50%;
     float: left !important;
-    margin-left: 10em;
+    margin-left: 13em;
     position: relative;
 }
 .navbar-form .form-control {
@@ -142,7 +157,7 @@ ul.nav.nav-sidebar li a{
     padding: .8em 0 .8em 3em;
 }
 .main-grids {
-  padding: 0 0 1em 1em;
+  padding: 0 0 15px 15px;
 }
 .sidebar ul.nav-sidebar li a:hover{
     background-color: #232323 !important;

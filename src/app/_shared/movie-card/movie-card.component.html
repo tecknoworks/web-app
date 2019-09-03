@@ -11,8 +11,9 @@
           *ngIf="movie.historyRecord!=null"
           [color]="orange"
           [mode]="determinate"
-          [value]="timeViewed">
-      </mat-progress-bar>
+          [value]="timeViewed"
+          style="position: absolute">
+    </mat-progress-bar>
   </div>
   <div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
     <h5><a routerLink="/movie/{{movie.id}}" class="title">{{movie.title}}</a></h5>
