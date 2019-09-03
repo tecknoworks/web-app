@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,7 @@ import { FrameDetailsComponent } from './_shared/frame-details/frame-details.com
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { DatePipe } from '@angular/common';
+import { RatingComponent } from './_shared/rating/rating.component';
 
 
 @NgModule({
@@ -68,7 +70,8 @@ import { DatePipe } from '@angular/common';
       CommentSectionComponent,
       EpisodeListComponent,
       EpisodeComponent,
-      FrameDetailsComponent
+      FrameDetailsComponent,
+      RatingComponent
    ],
    entryComponents: [
       SignInComponent,
@@ -97,7 +100,9 @@ import { DatePipe } from '@angular/common';
       MatProgressBarModule,
       MatProgressSpinnerModule,
       MatButtonModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      NgbModule,
+      NgbRatingModule
    ],
    providers: [
       DatePipe,
