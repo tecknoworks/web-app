@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Episode } from '../_models/episode';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { EpisodeListComponent } from '../_shared/episode-list/episode-list.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class EpisodeService {
   private _episodeList:Episode[] =[]
   private _episode:Episode;
   private _seasonList:Map<string, Episode[]>= new Map()
+
+  public currentEpisodeIdPlaying: string;
 
   constructor(private _httpClient: HttpClient) { }
 

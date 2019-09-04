@@ -31,6 +31,28 @@ body a {
 	transform: translate(-50%, -50%);
 }
 
+.btn {
+	border: 2px solid #21DEEF;
+	border-radius: 5px;
+	background-color: white;
+	color: #21DEEF;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+
+/* Blue */
+.info {
+	border-color: #21DEEF;
+	color: #21DEEF;
+  }
+  
+.info:hover {
+	background: #21DEEF;
+	color: white;
+}
+
+
 a.navbar-brand {
    padding: 0 0 0 1em;
 }
@@ -71,7 +93,7 @@ form.navbar-form.navbar-right {
     border: 1px solid #ccc;
 }
 .top-search form input[type="submit"] {
-    background: url(/images/9.png) no-repeat 0px 0px !important;
+    background: no-repeat 0px 0px !important;
     width: 18px !important;
     height: 18px !important;
     border: none !important;
@@ -137,14 +159,14 @@ form.navbar-form.navbar-right {
 }
 .signin a:hover{
 	text-decoration:none;
-	color:#272C2E;
+	color:#21DEEF;
 	background:#F7F7F7;
 }
 .signin a:focus {
     outline: none;
 }
 .main {
-    padding: 5em 0 0 0;
+    padding: 3em 0 0 0;
 }
 ul.nav.nav-sidebar a.active{
     background-color: #232323 !important;
@@ -1179,7 +1201,6 @@ width:100%;
     resize: none;
     min-height: 200px;
     margin: 1em 0;
-    width: 80%;
 }
 .box input[type="submit"] {
     outline: none;
@@ -1757,19 +1778,19 @@ span.glyphicon.glyphicon-user {
 	margin:0 .3em;
 }
 .side-bottom-icons ul li a.facebook{
-background: url(/images/social.png) no-repeat 0px 0px;
+background: no-repeat 0px 0px;
     width: 30px;
     height: 30px;
     display: block;
 }
 .side-bottom-icons ul li a.twitter{
-    background: url(/images/social.png) no-repeat -30px 0px;
+    background: no-repeat -30px 0px;
 }
 .side-bottom-icons ul li a.chrome{
-    background: url(/images/social.png) no-repeat -60px 0px;
+    background: no-repeat -60px 0px;
 }
 .side-bottom-icons ul li a.dribbble{
-    background: url(/images/social.png) no-repeat -90px 0px;
+    background: no-repeat -90px 0px;
 }
 .side-bottom-icons ul li a.facebook:hover{
 	opacity:.5;

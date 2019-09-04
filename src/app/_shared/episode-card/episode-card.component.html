@@ -1,10 +1,16 @@
 
-<div class="single-right-grids">
+<div class="single-right-grids" [ngStyle]="{ 'background-color': isCurrent ? '#f7f7f7' : 'white' }" >
     <div class="col-md-4 single-right-grid-left">
-      <a routerLink="/tv-show/{{episode.tvShowId}}/episode/{{episode.id}}"><img src="{{imageUrl}}" alt="" /></a>
+      <a routerLink="/tv-show/{{episode.tvShowId}}/episode/{{episode.id}}"><img src="{{imageUrl}}" alt=""/></a>
+      <mat-progress-bar
+          *ngIf="episode.historyRecord!=null"
+          [color]="primary"
+          [mode]="determinate"
+          [value]="timeViewed">
+    </mat-progress-bar>
     </div>
     <div class="col-md-8 single-right-grid-right">
-      <a routerLink="/tv-show/{{episode.tvShowId}}/episode/{{episode.id}}" class="title"> Episode {{episode.episodeNo}}: {{episode.title}}</a>
+      <a routerLink="/tv-show/{{episode.tvShowId}}/episode/{{episode.id}}" class="title" [ngStyle]="{'color': episode.historyRecord!=null && !isCurrent ? '#9FF0F8' : '#21DEEF'}" > Episode {{episode.episodeNo}}: {{episode.title}}</a>
       <p class="views">Published on {{episode.releaseDate | dateFormat}}</p>
     </div>
     <div class="clearfix"> </div>

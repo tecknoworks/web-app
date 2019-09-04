@@ -57,7 +57,6 @@ export class MovieComponent implements OnInit {
         this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
       }
     }
-  
   }
 
   async searchVideoFrame(){
@@ -76,9 +75,13 @@ export class MovieComponent implements OnInit {
   public play(){
     if(this._authService.isAuth){
       this.isPlaying = true;
-      if(this.movie.historyRecord!=null)
-        this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time
-      this.videoPlayer.nativeElement.load();
+      console.log(this.movie);
+      setTimeout(()=>{
+        this.videoPlayer.nativeElement.load();
+        if(this.movie.historyRecord!=null)
+          this.videoPlayer.nativeElement.currentTime=this.movie.historyRecord.time;  
+      },500);
+         
     }else{
       this._dialog.open(SignInComponent);
     }

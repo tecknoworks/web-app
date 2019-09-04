@@ -1,4 +1,4 @@
-<mat-dialog-content style="width: 1000px;">
+<mat-dialog-content style="width: 60vw; height: 60vh;">
       <mat-card *ngIf="risResult!=null">
         <mat-card-header>
           <mat-card-title>{{risResult.Title}}</mat-card-title>
@@ -15,9 +15,9 @@
           </ul>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>SHARE</button>
+          <button mat-button >SHARE</button>
           <button mat-button (click)="closeModal()">RESUME VIDEO</button>
         </mat-card-actions>
       </mat-card>
-      <mat-spinner *ngIf="risResult===null" style="display:flex;justify-content:center;align-items:center;"> </mat-spinner>
+      <mat-spinner  *ngIf="risResult===null" class="play_icon"> </mat-spinner>
 </mat-dialog-content>

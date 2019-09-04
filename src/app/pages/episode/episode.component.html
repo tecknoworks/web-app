@@ -6,10 +6,21 @@
       <div class="song">
         <div class="song-info">
           <h3><a routerLink="/tv-show/{{this.tvShow?.id}}">{{this.tvShow?.title}}</a> - Season {{this.episode?.seasonNo}},Episode {{this.episode?.episodeNo}}: {{this.episode?.title}}</h3>	
-      </div>
-          <video #videoPlayer controls style="width: 100%">
+        </div>
+
+          <video *ngIf="_authService.isAuth && isPlaying" #videoPlayer controls style="width: 100%">
               <source [src]="videoUrl" allowfullscreen>
           </video>
+
+          <div *ngIf="!_authService.isAuth || !isPlaying" (click)="play()" style="position: relative;">
+            <img src="{{posterUrl}}" style="width: 100%;">
+            <img src="assets/images/play.png" class="play_icon">
+          </div>
+
+          <div class="song-info">
+              <button *ngIf="_authService.isAuth && isPlaying" type="button" class="btn info" (click)="searchVideoFrame()">Tell me more</button>
+          </div>
+
       </div>
       <div class="clearfix"> </div>
       <div class="published">
