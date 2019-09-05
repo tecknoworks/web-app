@@ -5,6 +5,7 @@ import { TvShow } from 'src/app/_models/tv-show';
 import { Episode } from 'src/app/_models/episode';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from 'src/app/_services/video.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-tv-show',
@@ -19,7 +20,8 @@ export class TvShowComponent implements OnInit {
   constructor(
     private _tvShowService: TvShowService,
     private _activatedRoute: ActivatedRoute,
-    private _videoService: VideoService
+    private _videoService: VideoService,
+    private _authService: AuthService
     ) { }
 
   ngOnInit() {

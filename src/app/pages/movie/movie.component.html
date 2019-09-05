@@ -27,7 +27,7 @@
                 <h4>Genre:  {{movie?.genre.name}}</h4>
                 <h4>Created by:  {{movie?.producer.name}}</h4>
                 <h4>Content rating:  {{movie?.contentRating.rating}}</h4>
-                <h4>User rating:<rating [(screenplayId)]="movieId"></rating></h4>
+                <h4>User rating:<rating [(screenplayId)]="movieId" [(isAuth)]="_authService.isAuth"></rating></h4>
                 <p>{{movie?.description}}</p>
               </li>
             </ul>

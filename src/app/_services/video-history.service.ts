@@ -9,7 +9,7 @@ import { MovieService } from './movie.service';
 })
 export class VideoHistoryService {
 
-  constructor(private _httpClient: HttpClient, private _movieService: MovieService) { }
+  constructor(private _httpClient: HttpClient) { }
 
   public async postHistoryRecord($userId: string, $screenplayId: string, $screenplayType: string, $time: number, $videoDuration:number):Promise<void>{
     var result= await this._httpClient.post<HistoryRecord>(`${environment.gatewayApi}/history/`,{
@@ -19,11 +19,9 @@ export class VideoHistoryService {
       time: $time,
       videoDuration: $videoDuration
     }).toPromise()
-    this._movieService.initMovies()
   }
 
   public async updateHistoryRecord($videoRecord:HistoryRecord):Promise<void>{
     var result= await this._httpClient.put(`${environment.gatewayApi}/history/`, $videoRecord).toPromise()
-    this._movieService.initMovies()
   }
 }

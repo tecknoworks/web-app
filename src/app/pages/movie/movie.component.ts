@@ -39,23 +39,27 @@ export class MovieComponent implements OnInit {
     this.movieId = this._activatedRoute.snapshot.params['movie-id'];
     this._movieService.getMovieById(this.movieId).then((movie)=>{
       this.movie= movie;
+      
     });
   }
 
   ngOnDestroy(){
-    if(this._authService.isAuth && this.isPlaying){
-      if(this.movie.historyRecord==null){
-        var time=this.videoPlayer.nativeElement.currentTime
-        var videoDuration=this.videoPlayer.nativeElement.duration
-        var screenplayId=this.movieId
-        var screenplayType="movie"
-        var userId=JSON.parse(localStorage.getItem('user')).id;
-        this._videoHistoryService.postHistoryRecord(userId, screenplayId, screenplayType, time, videoDuration)
-      }else{
-        var historyRecord=this.movie.historyRecord;
-        historyRecord.time=this.videoPlayer.nativeElement.currentTime;
-        this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
+    if(this._authService.isAuth){
+      if(this.isPlaying){
+        if(this.movie.historyRecord==null){
+          var time=this.videoPlayer.nativeElement.currentTime
+          var videoDuration=this.videoPlayer.nativeElement.duration
+          var screenplayId=this.movieId
+          var screenplayType="movie"
+          var userId=this._authService.currentUser.id;
+          this._videoHistoryService.postHistoryRecord(userId, screenplayId, screenplayType, time, videoDuration)
+        }else{
+          var historyRecord=this.movie.historyRecord;
+          historyRecord.time=this.videoPlayer.nativeElement.currentTime;
+          this._videoHistoryService.updateHistoryRecord(this.movie.historyRecord)
+        }
       }
+      this._movieService.initMovies();
     }
   }
 

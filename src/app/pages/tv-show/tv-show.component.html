@@ -22,7 +22,7 @@
                 <h4>Genre:  {{tvShow?.genre.name}}</h4>
                 <h4>Created by:  {{tvShow?.producer.name}}</h4>
                 <h4>Content rating:  {{tvShow?.contentRating.rating}}</h4>
-                <h4>User rating:<rating [(screenplayId)]="tvShowId"></rating></h4>
+                <h4>User rating:<rating [(screenplayId)]="tvShowId" [(isAuth)]="_authService.isAuth"></rating></h4>
                 <p>{{tvShow?.description}}</p>
               </li>
             </ul>

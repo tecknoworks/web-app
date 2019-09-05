@@ -5,7 +5,7 @@
     <div class="col-sm-8 single-left">
       <div class="song">
         <div class="song-info">
-          <h3><a routerLink="/tv-show/{{this.tvShow?.id}}">{{this.tvShow?.title}}</a> - Season {{this.episode?.seasonNo}},Episode {{this.episode?.episodeNo}}: {{this.episode?.title}}</h3>	
+          <h3><a routerLink="/tv-show/{{this.tvShowId}}">{{this.tvShow?.title}}</a> - Season {{this.episode?.seasonNo}},Episode {{this.episode?.episodeNo}}: {{this.episode?.title}}</h3>	
         </div>
 
           <video *ngIf="_authService.isAuth && isPlaying" #videoPlayer controls style="width: 100%">
@@ -29,6 +29,7 @@
               <li style="display: list-item;">
                 <h4>Published on  {{this.episode?.releaseDate | dateFormat}}</h4>
                 <h4>Created by:  {{this.tvShow?.producer.name}}</h4>
+                <h4>User rating:<rating [(screenplayId)]="episodeId" [(isAuth)]="_authService.isAuth"></rating></h4>
                 <p>{{this.episode?.description}}</p>
               </li>
             </ul>

@@ -22,6 +22,8 @@ export class EpisodeComponent implements OnInit {
 
   @ViewChild('videoPlayer', {static:false}) videoPlayer: ElementRef;
   public isPlaying=false;
+  public tvShowId: string;
+  public episodeId: string;
 
   constructor(
     private _episodeService: EpisodeService, 
@@ -46,12 +48,12 @@ export class EpisodeComponent implements OnInit {
 
 
   fetchData(){
-    var tvShowId=this._activatedRoute.snapshot.params['tv-show-id']
-    var episodeId=this._activatedRoute.snapshot.params['episode-id']
-    this._episodeService.currentEpisodeIdPlaying=episodeId;
+     this.tvShowId=this._activatedRoute.snapshot.params['tv-show-id']
+     this.episodeId=this._activatedRoute.snapshot.params['episode-id']
+    this._episodeService.currentEpisodeIdPlaying=this.episodeId;
 
-    this._tvShowService.initTvShowById(tvShowId)
-    this._episodeService.initEpisodeById(episodeId)
+    this._tvShowService.initTvShowById(this.tvShowId)
+    this._episodeService.initEpisodeById(this.episodeId)
     this.isPlaying = false;
     
     
