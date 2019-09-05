@@ -13,6 +13,7 @@ export class RatingService {
     let params = new HttpParams();
     params = params.append("screenplayId",screenplayId);
     var result = await this._httpClient.get<AverageRating>(`${environment.gatewayApi}/ratings/average`, { params: params }).toPromise()
+    
     return result;
   }
 
@@ -20,13 +21,13 @@ export class RatingService {
     let params = new HttpParams();
     params = params.append("screenplayId",screenplayId);
     var result = await this._httpClient.get<Rating>(`${environment.gatewayApi}/ratings/one`, { params: params }).toPromise()
+
+    
     return result;
   }
 
-  public async setRating(screenplayId: string,rating:number): Promise<Rating> {
-    let params = new HttpParams();
-    //params = params.append({"screenplayId":screenplayId, "rating": rating});
-    var result = await this._httpClient.get<Rating>(`${environment.gatewayApi}/ratings/`, { params: params }).toPromise()
+  public async insertRating(screenplayId: string,rating:number): Promise<Rating> {
+    let result=await this._httpClient.post<Rating>(`${environment.gatewayApi}/ratings/`,{screenplayId, rating}).toPromise();
     return result;
   }
 }

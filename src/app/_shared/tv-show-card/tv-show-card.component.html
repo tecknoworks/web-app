@@ -11,7 +11,7 @@
           </a></p>
       </li>
       <li class="right-list">
-        <p class="views views-info">{{this.tvShow.userRating}} <fa name="star"></fa></p>
+        <p class="views views-info"><fa name="star" [ngStyle]="{'color':tvShow.userRating === 0 ? 'gray' : 'gold' }"></fa>{{this.tvShow.userRating}}</p>
       </li>
     </ul>
   </div>

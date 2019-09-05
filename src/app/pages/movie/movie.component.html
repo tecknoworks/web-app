@@ -27,13 +27,16 @@
                 <h4>Genre:  {{movie?.genre.name}}</h4>
                 <h4>Created by:  {{movie?.producer.name}}</h4>
                 <h4>Content rating:  {{movie?.contentRating.rating}}</h4>
-                <h4>User rating:  {{movie?.userRating}}<fa name="star"></fa></h4>
+                <h4>User rating:<rating [(screenplayId)]="movieId"></rating></h4>
                 <p>{{movie?.description}}</p>
               </li>
             </ul>
           </div>
       </div>
+<<<<<<< HEAD
       <!-- <rating [(screenplayId)]="movieId"></rating> -->
+=======
+>>>>>>> add ratings on movie and tv-shows card
       <app-comment-section></app-comment-section>
     </div>
     <div class="clearfix"> </div>

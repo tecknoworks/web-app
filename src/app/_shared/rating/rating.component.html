@@ -1,1 +1,6 @@
-<ngb-rating [(rate)]="currentRate" (rateChange)="onRateChange()"></ngb-rating> {{average}} / {{total}}
+<i class="fa fa-star"></i> {{average}}/{{max}}  ( {{total}} )
+<br>
+<div><h4 *ngIf="view">Rate this: </h4></div>
+<div>
+<ngb-rating [(ngModel)]="currentRate" [(rate)]="currentRate" [(max)]="max" *ngIf="view" (click)="updateClientRatings(name,currentRate)">
+ </ngb-rating></div>

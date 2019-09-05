@@ -22,7 +22,7 @@
         <p class="author author-info"><a href="#" class="author"><fa name="user"></fa>{{movie.producer.name}}</a></p>
       </li>
       <li class="right-list">
-        <p class="views views-info">{{movie.userRating}} <fa name="star"></fa></p>
+        <p class="views views-info"><fa name="star" [ngStyle]="{'color':movie.userRating === 0 ? 'gray' : 'gold' }"></fa>{{movie.userRating}} </p>
       </li>
     </ul>
   </div>
