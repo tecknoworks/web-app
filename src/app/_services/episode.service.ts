@@ -29,6 +29,10 @@ export class EpisodeService {
     return this._episode
   }
 
+  public set episode(episode: Episode){
+    this._episode=episode;
+  }
+
   public async initEpisodeList(tvShowId:string):Promise<void>{
     let params = new HttpParams();
     params = params.append('tvShowId', tvShowId);

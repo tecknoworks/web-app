@@ -46,8 +46,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { DatePipe } from '@angular/common';
 import { RatingComponent } from './_shared/rating/rating.component';
-
-
+import { UiCarouselModule } from "ngx-ui-carousel"
 @NgModule({
    declarations: [
       AppComponent,
@@ -102,7 +101,8 @@ import { RatingComponent } from './_shared/rating/rating.component';
       MatButtonModule,
       ReactiveFormsModule,
       NgbModule,
-      NgbRatingModule
+      NgbRatingModule,
+      UiCarouselModule
    ],
    providers: [
       DatePipe,
