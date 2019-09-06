@@ -46,11 +46,8 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { DatePipe } from '@angular/common';
 import { RatingComponent } from './_shared/rating/rating.component';
-import { FooterComponent } from './_shared/footer/footer.component';
-
-
-import {  NO_ERRORS_SCHEMA } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UiCarouselModule } from "ngx-ui-carousel"
+import {FooterComponent} from './_shared/footer/footer.component'
 
 @NgModule({
    declarations: [
@@ -108,7 +105,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
       ReactiveFormsModule,
       NgbModule,
       NgbRatingModule,
-      MDBBootstrapModule.forRoot()
+      UiCarouselModule
    ],
    providers: [
       DatePipe,
@@ -117,7 +114,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
    ],
    bootstrap: [
       AppComponent
-   ],
-   schemas: [ NO_ERRORS_SCHEMA ]
+   ]
 })
 export class AppModule { }

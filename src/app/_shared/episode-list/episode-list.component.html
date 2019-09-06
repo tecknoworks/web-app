@@ -1,7 +1,7 @@
 <div class="col-md-4 single-right">
   <h3>Seasons</h3>
   <div class="single-grid-right">
-      <mat-expansion-panel *ngFor="let season of seasonRange">
+      <mat-expansion-panel [expanded]="isExpanded(season)" *ngFor="let season of seasonRange">
         <mat-expansion-panel-header>
             <mat-panel-title>Season {{season}}</mat-panel-title>
         </mat-expansion-panel-header>

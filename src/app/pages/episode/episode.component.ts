@@ -118,6 +118,7 @@ export class EpisodeComponent implements OnInit {
   ngOnDestroy(){
     this.saveHistoryRecord();
     this._episodeService.currentEpisodeIdPlaying = null;
+    this._episodeService.episode= null;
   }
 
 }

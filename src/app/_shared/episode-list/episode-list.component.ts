@@ -33,4 +33,12 @@ export class EpisodeListComponent implements OnInit {
     return this._episodeService.seasonList[seasonNo]
   }
 
+
+  public isExpanded(season):boolean{
+    if(this._episodeService.episode){
+      return this._episodeService.episode.seasonNo== season ? true : false;
+    }
+    return false
+  }
+
 }
