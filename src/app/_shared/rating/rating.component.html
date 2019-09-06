@@ -1,4 +1,4 @@
-<i class="fa fa-star"></i> {{average}}/{{max}}  ( {{total}} )
+<i class="fa fa-star" [ngStyle]="{'color' : average != 0 ? 'gold' : 'gray' }" ></i> {{average}}/{{max}}  ( {{total}} )
 <br>
 <div *ngIf="isAuth">
     <div><h4>Rate this: </h4></div>

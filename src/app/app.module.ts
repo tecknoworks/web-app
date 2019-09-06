@@ -46,7 +46,11 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { DatePipe } from '@angular/common';
 import { RatingComponent } from './_shared/rating/rating.component';
+import { FooterComponent } from './_shared/footer/footer.component';
 
+
+import {  NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
    declarations: [
@@ -71,7 +75,8 @@ import { RatingComponent } from './_shared/rating/rating.component';
       EpisodeListComponent,
       EpisodeComponent,
       FrameDetailsComponent,
-      RatingComponent
+      RatingComponent,
+      FooterComponent
    ],
    entryComponents: [
       SignInComponent,
@@ -102,7 +107,8 @@ import { RatingComponent } from './_shared/rating/rating.component';
       MatButtonModule,
       ReactiveFormsModule,
       NgbModule,
-      NgbRatingModule
+      NgbRatingModule,
+      MDBBootstrapModule.forRoot()
    ],
    providers: [
       DatePipe,
@@ -111,6 +117,7 @@ import { RatingComponent } from './_shared/rating/rating.component';
    ],
    bootstrap: [
       AppComponent
-   ]
+   ],
+   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
