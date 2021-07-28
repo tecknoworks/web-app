@@ -46,7 +46,7 @@ export class MovieService {
   }
 
   public async getMovieById(movieId:string):Promise<Movie>{
-    var result = await this._http.get<Movie>(`${environment.gatewayApi}/movies/${movieId}`).toPromise()
+    var result = await this._http.get<Movie>(`${environment.gatewayApi}/movies/one?id=${movieId}`).toPromise()
     return result
   }
 
